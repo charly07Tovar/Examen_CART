@@ -1,0 +1,128 @@
+/* Sección Formulario */
+.seccion-formulario {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Formulario */
+.formulario-curso {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* Inputs */
+.formulario-curso input {
+  padding: 14px 16px;
+  border: 1.5px solid #e1e8ed;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  color: #1a1d29;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.formulario-curso input::placeholder {
+  color: #9ca3af;
+}
+
+.formulario-curso input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.formulario-curso input:hover {
+  border-color: #cbd5e0;
+}
+
+/* Input número - ocultar flechas */
+.formulario-curso input[type="number"]::-webkit-inner-spin-button,
+.formulario-curso input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.formulario-curso input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Contenedor del botón */
+.btn-style {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+/* Botón */
+.btn {
+  padding: 14px 32px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  outline: none;
+}
+
+.btn-success {
+  background: linear-gradient(125deg, #4f4ba2 0%, #65ff4a);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+}
+
+.btn-success:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+/* Responsivo - Tablet */
+@media (max-width: 768px) {
+  .seccion-formulario {
+    padding: 24px;
+  }
+
+  .formulario-curso {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .btn-style {
+    justify-content: stretch;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+/* Responsivo - Mobile */
+@media (max-width: 480px) {
+  .seccion-formulario {
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  .formulario-curso input {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .btn {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+}

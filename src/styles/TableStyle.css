@@ -1,4 +1,147 @@
+/* Contenedor de la tabla */
 .tabla-registro {
-    padding: 50px;
-
+  max-width: 1200px;
+  margin: 32px auto;
+  padding: 0;
 }
+
+/* Tabla */
+.tabla-registro table {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-collapse: collapse;
+}
+
+/* Encabezado de la tabla */
+.tabla-registro thead {
+  background-color: #f8f9fb;
+}
+
+.tabla-registro th {
+  padding: 16px 20px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Cuerpo de la tabla */
+.tabla-registro tbody tr {
+  border-bottom: 1px solid #f3f4f6;
+  transition: background-color 0.2s ease;
+}
+
+.tabla-registro tbody tr:last-child {
+  border-bottom: none;
+}
+
+.tabla-registro tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.tabla-registro td {
+  padding: 16px 20px;
+  font-size: 14px;
+  color: #1f2937;
+}
+
+/* Botones en la tabla */
+.tabla-registro td button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  margin-right: 8px;
+}
+
+.tabla-registro td button:last-child {
+  margin-right: 0;
+}
+
+/* Botón Editar */
+.tabla-registro td button.btn-editar {
+  background-color: #f0f4ff;
+  color: #4f46e5;
+}
+
+.tabla-registro td button.btn-editar:hover {
+  background-color: #e0e7ff;
+}
+
+/* Botón Eliminar */
+.tabla-registro td button.btn-eliminar {
+  background-color: #fef2f2;
+  color: #dc2626;
+}
+
+.tabla-registro td button.btn-eliminar:hover {
+  background-color: #fee2e2;
+}
+
+/* Responsivo - Tablet */
+@media (max-width: 1024px) {
+  .tabla-registro {
+    margin: 24px auto;
+  }
+
+  .tabla-registro th,
+  .tabla-registro td {
+    padding: 14px 16px;
+    font-size: 13px;
+  }
+}
+
+/* Responsivo - Mobile */
+@media (max-width: 768px) {
+  .tabla-registro {
+    margin: 20px auto;
+    overflow-x: auto;
+  }
+
+  .tabla-registro table {
+    min-width: 600px;
+  }
+
+  .tabla-registro th,
+  .tabla-registro td {
+    padding: 12px 14px;
+    font-size: 12px;
+  }
+
+  .tabla-registro td button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
+/* Scroll horizontal en móvil */
+@media (max-width: 768px) {
+  .tabla-registro::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .tabla-registro::-webkit-scrollbar-track {
+    background: #f3f4f6;
+    border-radius: 10px;
+  }
+
+  .tabla-registro::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 10px;
+  }
+
+  .tabla-registro::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+}
+

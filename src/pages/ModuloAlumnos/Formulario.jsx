@@ -1,4 +1,5 @@
-import { agregarAlumno } from "../Functions/Logic";
+import { agregarAlumno } from "../../Functions/Logic";
+import './../../styles/Formulario.css'
 
 // Funcion con argumento
 const enviarInfo = (event) => {

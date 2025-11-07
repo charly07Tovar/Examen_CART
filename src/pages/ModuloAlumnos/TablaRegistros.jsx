@@ -1,4 +1,4 @@
-import { obtenerAlumnosAprobados, eliminarAlumno } from "../Functions/Logic"
+import { obtenerAlumnosAprobados, eliminarAlumno } from "../../Functions/Logic"
 
 // utilizamos una funcion para mostrar los registros de la tabla
 export const TablaRegistros = () => {
@@ -25,7 +25,7 @@ export const TablaRegistros = () => {
                   <td>{alumno.materia}</td>
                   <td>{alumno.grupo}</td>
                   <td>{alumno.carrera}</td>
-                  <td><button id='btnEliminar' onClick={() => eliminarAlumno(index)}>Eliminar</button></td>
+                  <td><button className="btnEliminar" id='btnEliminar' onClick={() => eliminarAlumno(index)}>Eliminar</button></td>
                 </tr>
               )
             })}

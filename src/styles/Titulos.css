@@ -1,11 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nabla&display=swap');
+
 
 .titulo-gestion {
-  font-family: "Roboto", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: normal;
-  font-variation-settings:"wdth" 100;
-
+  font-family: "Monsieur La Doulaise", cursive;
+  font-weight: 400;
+  font-style: extra bold;
+  font-size: 80px;
+  text-align: center;
   margin-bottom: 15px;
+}
+
+.titulo-inicio {
+  font-family: "Nabla", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 50px;
+  text-align: center;
+  font-style: normal;
+  font-variation-settings:
+    "EDPT" 100,
+    "EHLT" 12;
 }
