@@ -9,6 +9,7 @@ import { Login } from './pages/Login/Login';
 import { useAuth } from './context/AutenticacionContext';
 import PropTypes from 'prop-types';
 import { AlumnosProvider } from './context/AlumnosContext';
+import { NotFound } from './Components/NotFound';
 
 // Componente para proteger rutas
 const ProtectedRoute = ({ children }) => {
@@ -122,6 +123,7 @@ function App() {
                         </div>
                       }
                     />
+                    <Route path="*" element={<NotFound />} />
                   </Routes>
                 </div>
               </div>

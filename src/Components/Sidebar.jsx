@@ -4,7 +4,7 @@ import './../styles/Sidebar.css';
 import { useAuth } from "../context/AutenticacionContext";
 
 export const Sidebar = () => {
-    const { isAuthenticated, logout } = useAuth();
+    const { isAuthenticated, logout, user } = useAuth();
     return (
         <aside className="sidebar">
             {/* Header */}
@@ -36,7 +36,7 @@ export const Sidebar = () => {
                 <div className="nav-section">
                     <div className="nav-section-title">Sistema</div>
 
-                    <Link to="/configuracion" className="nav-item">
+                    <Link to="/*" className="nav-item">
                         <i className="bi bi-gear-fill nav-icon"></i>
                         <span className="nav-text">Configuración</span>
                     </Link>
@@ -46,10 +46,12 @@ export const Sidebar = () => {
             {/* Footer */}
             <div className="sidebar-footer">
                 <div className="user-profile">
-                    <div className="user-avatar">JD</div>
+                    <div className="user-avatar">
+                        {user?.email ? user.email.charAt(0).toUpperCase() : "?"}
+                    </div>
                     <div className="user-info">
-                        <div className="user-name">Juan Pérez</div>
-                        <div className="user-role">Administrador</div>
+                        <div className="user-name">{user?.email || "Usuario no identificado"}</div>
+                        <div className="user-role">{user?.role || "Sin rol"}</div>
                     </div>
                 </div>
             </div>
