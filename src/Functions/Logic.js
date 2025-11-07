@@ -1,45 +1,56 @@
-const listaAlumnos = [
-    { nombre: "Ana", edad: 20, materia: "Sistemas Operativos", grupo: "IDGS1003", carrera: "Ing. Desarrollo de Software" },
-    { nombre: "Luis", edad: 22, materia: "Desarrollo móvil integral", grupo: "IDGS1001", carrera: "Ing. Desarrollo de Software" },
-    { nombre: "María", edad: 19, materia: "Desarrollo móvil integral", grupo: "IDGS1001", carrera: "Ing. Desarrollo de Software" }];
+// src/Functions/Logic.js
+import { selectAll, remove, add, update } from "../services/alumnoService";
 
-export function obtenerAlumnosAprobados() {
-    return listaAlumnos;
-}
-
-// simulamos un intervalo de 2 segundos 
-export const agregarAlumno = (alumno) => {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(alumno);
-            console.log("Un momento por favor....")
-            listaAlumnos.push(alumno);
-            console.log(`Alumno agregado:  ${alumno.nombre}`);
-            renderizarAlumnos();
-        }, 3000);
-    });
-}
-
-export function renderizarAlumnos() {
-    const cuerpoTabla = document.getElementById('cuerpo-tabla');
-    if (!cuerpoTabla) return;
-
-    cuerpoTabla.innerHTML = listaAlumnos.map((alumno, index) =>
-        `<tr key=${index}>
-            <td>${alumno.nombre}</td>
-            <td>${alumno.edad}</td>
-            <td>${alumno.materia}</td>
-            <td>${alumno.grupo}</td>
-            <td>${alumno.carrera}</td>
-            <td><button id='btnEliminar' onclick='eliminarAlumno(${index})'>Eliminar</button></td>
-        </tr>`).join('');
-}
-
-export const eliminarAlumno = (index) => {
-    const nuevaLista = listaAlumnos.filter((_, i) => i !== index);
-    listaAlumnos.length = 0;
-    listaAlumnos.push(...nuevaLista);
-    renderizarAlumnos();
+// Obtener todos los alumnos
+export const obtenerAlumnosAprobados = async (setAlumnos) => {
+  try {
+    const data = await selectAll();
+    setAlumnos(data);
+  } catch (error) {
+    console.error("Error al obtener alumnos:", error);
+    setAlumnos([]);
+  }
 };
 
-window.eliminarAlumno = eliminarAlumno;
+// Agregar alumno
+export const agregarAlumno = async (nuevoAlumno, setAlumnos) => {
+  try {
+    const result = await add(nuevoAlumno);
+    alert("Alumno agregado correctamente");
+
+    if (setAlumnos) obtenerAlumnosAprobados(setAlumnos);
+
+    return { success: true, data: result.data };
+  } catch (error) {
+    console.error("Error al agregar alumno:", error);
+    alert("Error al agregar el alumno");
+    return { success: false, error: error.message };
+  }
+};
+
+// Actualizar alumno
+export const actualizarAlumno = async (id, alumno) => {
+  try {
+    const response = await update(id, alumno);
+    return { success: true, data: response };
+  } catch (error) {
+    console.log("alumno", alumno);
+    console.error("Error al actualizar alumno:", error);
+    return { success: false, error: error.message };
+  }
+};
+
+// Eliminar alumno
+export const eliminarAlumno = async (idAlumno, setAlumnos) => {
+  const confirmar = window.confirm("¿Deseas eliminar este alumno?");
+  if (!confirmar) return;
+
+  try {
+    await remove(idAlumno);
+    alert("Alumno eliminado correctamente");
+    obtenerAlumnosAprobados(setAlumnos);
+  } catch (error) {
+    console.error("Error al eliminar alumno:", error);
+    alert("Error al eliminar el alumno");
+  }
+};

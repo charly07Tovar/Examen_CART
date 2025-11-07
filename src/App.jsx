@@ -8,15 +8,16 @@ import { TablaCursos } from './pages/ModuloCursos/TablaCursos';
 import { Login } from './pages/Login/Login';
 import { useAuth } from './context/AutenticacionContext';
 import PropTypes from 'prop-types';
+import { AlumnosProvider } from './context/AlumnosContext';
 
 // Componente para proteger rutas
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
-  
+
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
-  
+
   return children;
 };
 
@@ -31,7 +32,7 @@ function App() {
       <Routes>
         {/* Ruta pública de login */}
         <Route path="/login" element={<Login />} />
-        
+
         {/* Rutas protegidas */}
         <Route
           path="/*"
@@ -45,11 +46,13 @@ function App() {
                     <Route
                       path="/alumnos"
                       element={
-                        <>
-                          <h1 className='titulo-gestion'>Gestión de alumnos</h1>
-                          <FormularioAlumnos />
-                          <TablaAlumnos />
-                        </>
+                        <AlumnosProvider>
+                          <>
+                            <h1 className='titulo-gestion'>Gestión de alumnos</h1>
+                            <FormularioAlumnos />
+                            <TablaAlumnos />
+                          </>
+                        </AlumnosProvider>
                       }
                     />
 
